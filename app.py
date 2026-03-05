@@ -29,22 +29,15 @@ def parse_guess(raw: str):
     return True, value, None
 
 
+# FIXME: Logic breaks here
+# FIX: With the help of Copilot,fixed it by swapping the hint messages inside check_guess so they match the comparison.
 def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
-
-    try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
-        else:
-            return "Too Low", "📉 Go LOWER!"
-    except TypeError:
-        g = str(guess)
-        if g == secret:
-            return "Win", "🎉 Correct!"
-        if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+    elif guess > secret:
+        return "Too High", "📉 Go LOWER!"
+    else:
+        return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -155,10 +148,10 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
+         # FIXME: Logic breaks here
+        # FIX: With the help of Copilot,fixed it by ensuring secret is always an int for comparison, 
+        # and not accidentally a string which was causing a bug.
+        secret = int(st.session_state.secret)
 
         outcome, message = check_guess(guess_int, secret)
 

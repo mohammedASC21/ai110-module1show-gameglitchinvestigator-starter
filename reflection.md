@@ -8,7 +8,13 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
 
----
+The hint doesn't work, it continuesly tell you to go higher when the secret number is lower and vice versa.
+
+New Game didn’t reset the game properly. Even after clicking it, the app still stayed in ‘Game over’ mode and wouldn’t give hints anymore. 
+
+The difficulty level is wrong too. Normal and hard mode are misplaced.Hard mode is actually easier than “Normal. When you select Hard, the secret number range becomes smaller instead of harder. 
+
+The game always tells you “Guess a number between 1 and 100” even when difficulty changes.
 
 ## 2. How did you use AI as a teammate?
 
@@ -16,7 +22,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
----
+At first, the AI suggested using a try/except to avoid the TypeError when comparing numbers. That stopped the crash, but it didn’t fix the real problem, which was that the secret number sometimes became a string. I confirmed this by seeing the same issue happen again, and then fixing it properly by keeping the secret number as an integer.
 
 ## 3. Debugging and testing your fixes
 
