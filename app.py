@@ -30,7 +30,8 @@ def parse_guess(raw: str):
 
 
 # FIXME: Logic breaks here
-# FIX: With the help of Copilot,fixed it by swapping the hint messages inside check_guess so they match the comparison.
+# FIX: With the help of Copilot,fixed it by swapping the hint 
+# messages inside check_guess so they match the comparison.
 def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
@@ -126,8 +127,8 @@ with col3:
 
 # FIXME: Logic breaks here
 # FIX: With the help of Copilot, fixed it by ensuring that when a new game is started, 
-# all relevant session state variables are reset to their initial values, including generating a new secret number and resetting attempts, score, status, and history.
-
+# all relevant session state variables are reset to their initial values, 
+# including generating a new secret number and resetting attempts, score, status, and history.
 
 if new_game:
     low, high = get_range_for_difficulty(difficulty)
