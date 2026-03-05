@@ -124,9 +124,18 @@ with col2:
 with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
+# FIXME: Logic breaks here
+# FIX: With the help of Copilot, fixed it by ensuring that when a new game is started, 
+# all relevant session state variables are reset to their initial values, including generating a new secret number and resetting attempts, score, status, and history.
+
+
 if new_game:
+    low, high = get_range_for_difficulty(difficulty)
+    st.session_state.secret = random.randint(low, high)
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.score = 0
+    st.session_state.status = "playing"
+    st.session_state.history = []
     st.success("New game started.")
     st.rerun()
 
